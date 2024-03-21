@@ -15,38 +15,63 @@ public class  MemoRepositorysTests {
     MemoRepository memoRepository;
 
     @Test
-    public void testClass(){
+    public void testClass() {
         System.out.println((memoRepository.getClass().getName()));
     }
 
     @Test
-    public void testInsertDummies(){
-        IntStream.rangeClosed(1,100).forEach(i ->{
+    public void testInsertDummies() {
+        IntStream.rangeClosed(1, 100).forEach(i -> {
             Memo memo = Memo.builder().memoText("Dummy Data Test" + i).build();
             memoRepository.save(memo);
         });
     }
+
     //select
     @Test
-    public void testSelcect(){
+    public void testSelect() {
         Long mno = 100L;
         Optional<Memo> result = memoRepository.findById(mno);
         //Optional로 반환함
         System.out.println("====================================================");
-        if (result.isPresent()){
+        if (result.isPresent()) {
             Memo memo = result.get();
             System.out.println(memo);
-        }
-    }
+        } // if
+    } // testSelect
 
+    //select2
     @Transactional
     @Test
-    public void testSelcect2(){
+    public void testSelcect2() {
         Long mno = 100L;
 
         Memo memo = memoRepository.getOne(mno);
         System.out.println("====================================================");
 
-            System.out.println(memo);
-        }
+        System.out.println(memo);
+    } // testSelect2
+
+    //Update
+    @Test
+    public void testUpdate() {
+        Memo memo = Memo.builder().mno(95L).memoText("Update Dummy Data 95").build();
+
+        Memo memo1 = memoRepository.save(memo);
+
+        System.out.println(memo1);
+    } // testUpdate
+
+
+    //Delete
+    @Test
+    public void testDelete(){
+        Long mno = 100L;
+        memoRepository.deleteById(mno);
+
     }
+
+
+
+
+} //main
