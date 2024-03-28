@@ -8,8 +8,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.IntStream;
 @SpringBootTest
@@ -83,9 +85,9 @@ public class  MemoRepositorysTests {
     } // Delete}
 
     @Test
-    public void testPageDefault(){
+    public void testPageDefault(){ //페이지 데이터 불러오기
         //1페이지당 10개의 Entity의 정보를 가져오는 것
-        Pageable pageable = PageRequest.of(1, 10);
+        Pageable pageable = PageRequest.of(0, 10);
         //페이지 전체 정보를 result가 갖고 있음
         Page<Memo> result = memoRepository.findAll(pageable);
 
@@ -108,7 +110,7 @@ public class  MemoRepositorysTests {
     } //testPageDefault}
 
     @Test
-    public void testSort(){
+    public void testSort(){ //데이터를 맨 뒤에서부터 출력, testQueryMethodDelete()를 사용하기 위해 임시로 1로 변경
         Pageable pageable = PageRequest.of(0, 10, Sort.by("mno").descending());
         Page<Memo> result = memoRepository.findAll(pageable);
 
@@ -120,6 +122,55 @@ public class  MemoRepositorysTests {
     }//testSort}
 
 
+    @Test //데이터를 내림차순으로 출력
+    public void testQueryMethod(){
+        List<Memo> result = memoRepository.findByMnoBetweenOrderByMnoDesc(20L, 30L); //자료형이 Long형이면 정수 뒤에 L을 붙인다. 11개 출력
+        for (Memo memo : result){
+            System.out.println(memo.toString());
+        } // for}
+    } // testQueryMethod()}
+
+
+    @Test
+    public void testQueryMethod2(){
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("mno").descending()); //pageable이 페이지 컨드롤, Sort.by로 정렬
+        Page<Memo> result = memoRepository.findByMnoBetween(20L, 60L, pageable); //60페이지에서 내려감(sort로 내림차순함)
+
+        for (Memo memo : result){
+            System.out.println(memo.toString());
+        } // for}
+
+        System.out.println("==========================");
+        // 0페이지 부터 시작이면 페이지 시작 넘버가 20으로 시작하고, 1페이지 부터 시작하면 30부터 시작
+        pageable = PageRequest.of(0, 10); //pageable이 페이지 컨드롤, Sort.by로 정렬
+        result = memoRepository.findByMnoBetween(20L, 60L, pageable); //20페이지에서 올라감(기본적으로 오름차순임)
+
+        result.get().forEach(memo -> { //가져오는 페이지의 수가 다르게
+            System.out.println(memo);
+        });
+
+    } // testQueryMethod2()}
+
+
+    //데이터를 변경할 때 사용하는 어노테이션
+    @Transactional
+    @Commit
+    @Test
+    public void testQueryMethodDelete(){
+        memoRepository.deleteMemoByMnoLessThan(5L); //이 메서드는 Mno가 5미만인 객체들을 삭제하겠다는 의미
+        testPageDefault(); //함수 호출
+
+    } //testQueryMethodDelete()}
+
+    @Test
+    public void testQueryAnnotationNative(){
+        List<Memo> result = memoRepository.getNativeResult();
+        for (Memo memo : result){
+            System.out.println(memo);
+        } //for}
+
+
+    } //testQueryAnnotationNative()}
 
 
 } //main}
