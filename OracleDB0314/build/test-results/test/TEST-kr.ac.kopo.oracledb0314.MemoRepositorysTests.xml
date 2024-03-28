@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="kr.ac.kopo.oracledb0314.MemoRepositorysTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-03-21T02:54:10" hostname="DESKTOP-DKC8QG7" time="0.833">
+  <properties/>
+  <testcase name="testPageDefault()" classname="kr.ac.kopo.oracledb0314.MemoRepositorysTests" time="0.833"/>
+  <system-out><![CDATA[11:54:05.751 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [kr.ac.kopo.oracledb0314.MemoRepositorysTests]: MemoRepositorysTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+11:54:05.860 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration kr.ac.kopo.oracledb0314.OracleDb0314Application for test class kr.ac.kopo.oracledb0314.MemoRepositorysTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.3)
+
+2024-03-21T11:54:06.252+09:00  INFO 15432 --- [OracleDB0314] [    Test worker] k.a.k.oracledb0314.MemoRepositorysTests  : Starting MemoRepositorysTests using Java 21.0.2 with PID 15432 (started by AISW-509-189 in D:\SpringBootProjects\OracleDB0314)
+2024-03-21T11:54:06.253+09:00  INFO 15432 --- [OracleDB0314] [    Test worker] k.a.k.oracledb0314.MemoRepositorysTests  : No active profile set, falling back to 1 default profile: "default"
+2024-03-21T11:54:06.943+09:00  INFO 15432 --- [OracleDB0314] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-21T11:54:07.001+09:00  INFO 15432 --- [OracleDB0314] [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47 ms. Found 1 JPA repository interface.
+2024-03-21T11:54:07.617+09:00  INFO 15432 --- [OracleDB0314] [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-03-21T11:54:07.681+09:00  INFO 15432 --- [OracleDB0314] [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-03-21T11:54:07.717+09:00  INFO 15432 --- [OracleDB0314] [    Test worker] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-03-21T11:54:07.979+09:00  INFO 15432 --- [OracleDB0314] [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-03-21T11:54:08.014+09:00  INFO 15432 --- [OracleDB0314] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-03-21T11:54:08.019+09:00  WARN 15432 --- [OracleDB0314] [    Test worker] c.zaxxer.hikari.util.DriverDataSource    : Registered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+2024-03-21T11:54:08.357+09:00  INFO 15432 --- [OracleDB0314] [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection oracle.jdbc.driver.T4CConnection@78eafad
+2024-03-21T11:54:08.360+09:00  INFO 15432 --- [OracleDB0314] [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-03-21T11:54:09.427+09:00  INFO 15432 --- [OracleDB0314] [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-03-21T11:54:09.748+09:00  INFO 15432 --- [OracleDB0314] [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-03-21T11:54:09.917+09:00  WARN 15432 --- [OracleDB0314] [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-21T11:54:10.599+09:00  INFO 15432 --- [OracleDB0314] [    Test worker] k.a.k.oracledb0314.MemoRepositorysTests  : Started MemoRepositorysTests in 4.578 seconds (process running for 5.892)
+Hibernate: 
+    select
+        m1_0.mno,
+        m1_0.memo_text 
+    from
+        tbl_memo m1_0 
+    offset
+        ? rows 
+    fetch
+        first ? rows only
+Hibernate: 
+    select
+        count(m1_0.mno) 
+    from
+        tbl_memo m1_0
+Page 2 of 20 containing kr.ac.kopo.oracledb0314.entity.Memo instances
+Memo(mno=11, memoText=Dummy Data Test11)
+Memo(mno=12, memoText=Dummy Data Test12)
+Memo(mno=13, memoText=Dummy Data Test13)
+Memo(mno=14, memoText=Dummy Data Test14)
+Memo(mno=15, memoText=Dummy Data Test15)
+Memo(mno=16, memoText=Dummy Data Test16)
+Memo(mno=17, memoText=Dummy Data Test17)
+Memo(mno=18, memoText=Dummy Data Test18)
+Memo(mno=19, memoText=Dummy Data Test19)
+Memo(mno=20, memoText=Dummy Data Test20)
+]]></system-out>
+  <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (C:\Users\AISW-509-189\.gradle\caches\modules-2\files-2.1\net.bytebuddy\byte-buddy-agent\1.14.12\be4984cb6fd1ef1d11f218a648889dfda44b8a15\byte-buddy-agent-1.14.12.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>
