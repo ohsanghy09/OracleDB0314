@@ -114,7 +114,7 @@ public class  MemoRepositorysTests {
 
         result.get().forEach(memo -> {
             //System.out.println(memo); //전체 값 반환
-            System.out.println("number1 : " + memo.getMno() + ", content: " + memo.getMemoText()); //Mno 값만 반환
+            System.out.println("number : " + memo.getMno() + ", content: " + memo.getMemoText()); //Mno 값만 반환
 
         });//result.get().forEach(memo ->}
     }//testSort}
