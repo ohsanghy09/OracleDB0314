@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
@@ -85,7 +86,7 @@ public class  MemoRepositorysTests {
     public void testPageDefault(){
         //1페이지당 10개의 Entity의 정보를 가져오는 것
         Pageable pageable = PageRequest.of(1, 10);
-
+        //페이지 전체 정보를 result가 갖고 있음
         Page<Memo> result = memoRepository.findAll(pageable);
 
         System.out.println(result);
@@ -94,9 +95,29 @@ public class  MemoRepositorysTests {
             System.out.println((memo));
         }// for}
 
+        System.out.println("===========================================================");
 
+        //sout
+        System.out.println("Total Pages : " + result.getTotalPages()); //총 페이지의 개수 확인
+        System.out.println("Total Count : " + result.getTotalElements()); //Memo entity의 전체 개수 확인
+        System.out.println("Page Number : " + result.getNumber()); //총 페이지의 개수 확인
+        System.out.println("Total Size: " + result.getSize()); //현재 페이지의 개수확인
+        System.out.println("Has next page? : " + result.hasNext()); //
+        System.out.println("Is first page? : " + result.isFirst()); // 이 페이지가 첫 번째(0)번째 페이지냐?
+        //
     } //testPageDefault}
 
+    @Test
+    public void testSort(){
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("mno").descending());
+        Page<Memo> result = memoRepository.findAll(pageable);
+
+        result.get().forEach(memo -> {
+            //System.out.println(memo); //전체 값 반환
+            System.out.println("number : " + memo.getMno() + ", content: " + memo.getMemoText()); //Mno 값만 반환
+
+        });//result.get().forEach(memo ->}
+    }//testSort}
 
 
 
