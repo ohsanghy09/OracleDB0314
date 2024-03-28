@@ -173,4 +173,16 @@ public class  MemoRepositorysTests {
     } //testQueryAnnotationNative()}
 
 
+    @Test //Object사용하여 상위 값 가져옴 - 굳이 안써도 됨, get을 사용하여 반환 받을 수 있음.
+    public void testQueryAnnotationNative2(){
+        List<Object[]> result = memoRepository.getNativeResult2();
+        for (Object[] memoOb : result){
+            System.out.println(memoOb[1]); //MEMO_TEXT의 행 출력
+            //System.out.println(memoOb[0]); //MNO의 행 출력
+        } //for}
+
+
+    } //testQueryAnnotationNative2()}
+
+
 } //main}
